@@ -5,3 +5,12 @@ export default interface Product {
     url: string
     description: string
 }
+
+export const blankProduct: Product = { 
+    id: 0,
+    price: 0,
+    name: '',
+    url: '',
+    description: ''
+  }
+

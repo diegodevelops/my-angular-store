@@ -11,6 +11,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     OrderConfirmationComponent,
     ProductDetailsComponent,
     ProductItemComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,

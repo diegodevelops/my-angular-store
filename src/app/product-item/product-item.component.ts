@@ -1,5 +1,5 @@
 import { Component, Inject, Input } from '@angular/core';
-import Product from '../models/Product';
+import Product, { blankProduct } from '../models/Product';
 
 @Component({
   selector: 'app-product-item',
@@ -10,12 +10,6 @@ export class ProductItemComponent {
   @Input() product: Product
 
   constructor() {
-    this.product = { 
-      id: 0,
-      price: 0,
-      name: '',
-      url: '',
-      description: ''
-    }
+    this.product = blankProduct;
   }
 }
