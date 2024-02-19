@@ -1,13 +1,21 @@
 .product-card {
     height: 400px;
-    cursor: pointer;
 }
 
 .product-card img {
     height: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 
-.product-card:hover {
-    transform: scale(1.02);
+.arrow-link-container {
+    position: absolute;
+    left: calc(100% - 40px);
+    cursor: pointer;
+}
+
+.arrow-link-container i {
+    font-size: 20px;
+    color: #fff;
+    margin: 10px;
 }
