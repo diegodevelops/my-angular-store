@@ -11,6 +11,10 @@ export class CartService {
 
   constructor() { }
 
+  emptyCart(): void {
+    this.cartMap = {};
+  }
+
   getCartItems(): CartItem[] {
     let items = [];
     for (const [id, item] of Object.entries(this.cartMap)) {
@@ -19,6 +23,14 @@ export class CartService {
 
     items.sort( (a, b) => {  return a.dateAdded - b.dateAdded })
     return items;
+  }
+
+  getPaymentTotal(): number {
+    let total = 0;
+    for (const [id, item] of Object.entries(this.cartMap)) {
+      total = total + item.product.price*item.quantity;
+    }
+    return total;
   }
 
   getTotalCount(): number {
@@ -40,18 +52,12 @@ export class CartService {
       return;
     }
 
-    let cartItem = this.cartMap[product.id]
-    if (cartItem) {
-      this.cartMap[product.id] = { 
-        product: product,
-        quantity: cartItem.quantity + quantity,
-        dateAdded: cartItem.dateAdded
-      }
-    }
-    else {
-      const dateAdded = (new Date()).getTime();
-      this.cartMap[product.id] = { product, quantity, dateAdded }
-    }
+    const cartItem = this.cartMap[product.id];
 
+    const dateAdded = (cartItem) 
+      ? cartItem.dateAdded 
+      : (new Date()).getTime();
+
+    this.cartMap[product.id] = { product, quantity, dateAdded }
   }
 }

@@ -2,3 +2,8 @@
     margin-top: 40px;
     max-width: 800px;
 }
+
+.credit-card-note {
+    color: gray;
+    font-size: 12px;
+}
