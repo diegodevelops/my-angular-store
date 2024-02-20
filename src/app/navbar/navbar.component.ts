@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  cartCount: number = 0 
+
+  constructor(private cartService: CartService) { }
+
+  ngOnInit(): void {
+    this.cartCount = this.cartService.getTotalCount()
+  }
 }

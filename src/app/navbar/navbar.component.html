@@ -10,7 +10,14 @@
             <a class="nav-link" routerLink="/" routerLinkActive="active">Product List</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+            <a class="nav-link" routerLink="/cart" routerLinkActive="active">
+              <div class="position-relative">
+                <i class="bi bi-bag"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-text">
+                  {{ cartCount }}
+                </span>
+              </div>
+            </a>
         </li>
       </ul>
     </div>

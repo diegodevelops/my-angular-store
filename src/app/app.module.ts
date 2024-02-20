@@ -12,6 +12,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductDetailsComponent,
     ProductItemComponent,
     ProductListComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
