@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import Checkout, { blankCheckout } from '../models/Checkout';
-import CartItem from '../models/CartItem';
 
 @Injectable({
   providedIn: 'root'

@@ -13,6 +13,6 @@ export class NavbarComponent {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartCount = this.cartService.getTotalCount()
+    this.cartService.productCount.subscribe(count => { this.cartCount = count; });
   }
 }

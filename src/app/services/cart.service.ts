@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import CartItem from '../models/CartItem';
 import Product from '../models/Product';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  private productCountSource = new BehaviorSubject(0);
+  productCount = this.productCountSource.asObservable();
   private cartMap: {[productId: number]: CartItem} = {}
 
   constructor() { }
 
   emptyCart(): void {
     this.cartMap = {};
+    this.productCountSource.next(0);
   }
 
   getCartItems(): CartItem[] {
@@ -33,22 +37,16 @@ export class CartService {
     return total;
   }
 
-  getTotalCount(): number {
-    let count = 0;
-    for (const [id, item] of Object.entries(this.cartMap)) {
-      count = count + item.quantity
-    }
-    return count;
-  }
-
   remove(product: Product): void {
     delete this.cartMap[product.id]
+    this.productCountSource.next(this.getProductCount());
   }
 
   update(product: Product, quantity: number): void {
 
     if (quantity===0) {
-      delete this.cartMap[product.id]
+      delete this.cartMap[product.id];
+      this.productCountSource.next(this.getProductCount());
       return;
     }
 
@@ -59,5 +57,15 @@ export class CartService {
       : (new Date()).getTime();
 
     this.cartMap[product.id] = { product, quantity, dateAdded }
+    this.productCountSource.next(this.getProductCount());
+  }
+
+  // helpers
+  private getProductCount(): number {
+    let count = 0;
+    for (const [id, item] of Object.entries(this.cartMap)) {
+      count = count + item.quantity
+    }
+    return count;
   }
 }
