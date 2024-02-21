@@ -1,5 +1,13 @@
 <div class="container product-details-container">
-    <div class="row">
+
+    <!-- If no product found, show error message -->
+    <app-message-box message="Oops! We didn't find product with id: {{ id }}"
+                     emoji="😕"
+                     *ngIf="!product"
+    ></app-message-box>
+
+    <!-- Else, show details -->
+    <div class="row" *ngIf="product != undefined">
         <div class="col-md-6">
             <img src="{{ product.url }}" class="img-fluid rounded" alt="{{ product.name }}">
         </div>

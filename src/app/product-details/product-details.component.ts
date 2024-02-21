@@ -10,17 +10,17 @@ import { ProductDataService } from '../services/product-data.service';
 })
 export class ProductDetailsComponent {
   id: number = 0
-  product: Product
+  product?: Product
 
   constructor(
     private route: ActivatedRoute,
     private productDataService: ProductDataService
-  ) {
-    this.product = blankProduct;
-   } 
+  ) { } 
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get('id') || '')
-    this.product = this.productDataService.getProduct(this.id) || this.product
+    this.productDataService.getProduct(this.id).subscribe(data => {
+      this.product = data;
+    })
   }
 }

@@ -15,6 +15,7 @@ export class ProductListComponent {
 
   ngOnInit(): void {
     this.productDataService.getProducts().subscribe((data: Product[]) => {
+      console.log(`got products => ${JSON.stringify(data)}`)
       this.productList = data;
     })
   }
