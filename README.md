@@ -11,11 +11,11 @@ Some oncepts and modules used:
 - Services to separate concerns and make code more clean and modular
 - Bootstrap for styling and icons
 - `HtthClientModule` to read `data.json` and fetch product list from assets folder
-- `Observable` from `rxjs` module for to subscribe to the fetch request
+- `Observable` from `rxjs` module to subscribe to the fetch request
 - `BehaviorSubject` from `rxjs` module to update cart count badge on navbar
-- `ngModel` and `ngModelChange` for binding to form data
-- `ngFor` and `ngIf` in html templates for looping and render elements conditionally, respectively
-- `@Input` to inject dependencies in child components
+- `ngModel` and `ngModelChange` for binding form data to component variables
+- `ngFor` and `ngIf` in html templates for looping and rendering elements conditionally, respectively
+- `@Input` to inject dependencies into child components
 - `@Output` and `EventEmitter` to comunicate from child to parent components
 - `RouterModule`, `Routes` and `routerLink` for routing to keep app in one page
 
