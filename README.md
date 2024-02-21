@@ -15,7 +15,7 @@ Some oncepts and modules used:
 - `BehaviorSubject` from `rxjs` module to update cart count badge on navbar
 - `ngModel` and `ngModelChange` for binding form data to component variables
 - `ngFor` and `ngIf` in html templates for looping and rendering elements conditionally, respectively
-- `@Input` to inject dependencies into child components
+- `@Input` to inject values into child from parent components
 - `@Output` and `EventEmitter` to comunicate from child to parent components
 - `RouterModule`, `Routes` and `routerLink` for routing to keep app in one page
 
