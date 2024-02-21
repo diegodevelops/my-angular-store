@@ -4,7 +4,6 @@ An simple store made with Angular, Typescript and Bootstrap. Includes the most b
 - Product list page
 - Ability to add products to cart
 - Cart page to view and modify it and to checkout
-- Form validation in checkout oage
 - Order confirmation page
 
 Some oncepts and modules used:
