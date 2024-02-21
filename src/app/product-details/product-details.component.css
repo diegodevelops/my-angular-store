@@ -1,6 +1,7 @@
 .product-details-container {
     margin-top: 40px;
     max-width: 800px;
+    min-height: 70vh;
 }
 
 .product-quantity-container {

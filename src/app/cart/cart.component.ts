@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import CartItem from '../models/CartItem';
 import { Router } from '@angular/router';
+import { CheckoutService } from '../services/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,12 +10,18 @@ import { Router } from '@angular/router';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-
+  fullName: string = ""
+  address: string = ""
+  creditCard: string = ""
   cart: CartItem[] = []
   paymentTotal: number = 0
   prettyPaymentTotal: string = '$0.00'
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(
+    private cartService: CartService, 
+    private router: Router, 
+    private chechoutService: CheckoutService
+  ) { }
 
   ngOnInit(): void {
     this.setState()
@@ -39,8 +46,14 @@ export class CartComponent {
     setTimeout(() => { alert('Item removed!'); }, 200);
   }
 
-  onSubmit(): void {
+  async onSubmit() {
+    const checkout = await this.chechoutService.create({
+      fullName: this.fullName,
+      address: this.address,
+      cart: this.cart,
+      total: this.cartService.getPaymentTotal()
+    })
     this.cartService.emptyCart();
-    this.router.navigate(['/order-confirmation']);
+    this.router.navigate([`/order-confirmation/${checkout.id || ''}`]);
   }
 }
